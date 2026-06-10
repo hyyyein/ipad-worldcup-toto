@@ -833,25 +833,36 @@ dd {
 
 .resultControls {
   align-items: end;
-  display: grid;
+  display: flex;
   gap: 16px;
-  grid-template-columns: minmax(120px, 1fr) minmax(0, 620px) minmax(120px, 1fr);
-  justify-content: stretch;
+  justify-content: center;
+  min-height: 84px;
+  padding: 0 170px;
+  position: relative;
   width: 100%;
 }
 
 .resultInputs {
-  grid-column: 2;
-  grid-template-columns: minmax(0, 280px) auto minmax(0, 280px);
+  grid-template-columns: minmax(0, 210px) auto minmax(0, 210px);
   justify-self: center;
-  max-width: 620px;
+  max-width: 460px;
   min-width: 0;
   width: 100%;
 }
 
+.resultInputs label {
+  justify-items: center;
+}
+
+.resultInputs label span {
+  text-align: center;
+  width: 100%;
+}
+
 .resultControls .primaryButton {
-  grid-column: 3;
-  justify-self: start;
+  bottom: 0;
+  left: calc(50% + 255px);
+  position: absolute;
 }
 
 .scoreInputs input,
@@ -1111,13 +1122,22 @@ dd {
   }
 
   .resultControls {
+    display: grid;
     grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 0;
     width: 100%;
   }
 
   .resultInputs,
   .resultControls .primaryButton {
     grid-column: 1;
+  }
+
+  .resultControls .primaryButton {
+    bottom: auto;
+    left: auto;
+    position: static;
   }
 
   .primaryButton,
