@@ -589,6 +589,8 @@ label span {
 }
 
 input {
+  -webkit-appearance: none;
+  appearance: none;
   background: #ffffff;
   border: 1px solid rgba(36, 31, 26, 0.18);
   border-radius: 8px;
@@ -597,6 +599,16 @@ input {
   outline: 0;
   padding: 0 13px;
   width: 100%;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input:focus {
@@ -821,6 +833,7 @@ dd {
   width: 100%;
 }
 
+.scoreInputs input,
 .resultInputs input {
   text-align: center;
 }

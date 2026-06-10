@@ -189,6 +189,22 @@ function parseScoreValue(value: string) {
   return parsed;
 }
 
+function normalizeScoreInput(value: string) {
+  return value.replace(/\D/g, "");
+}
+
+function clearDefaultScore(value: string, setValue: (nextValue: string) => void) {
+  if (value === "0") {
+    setValue("");
+  }
+}
+
+function restoreDefaultScore(value: string, setValue: (nextValue: string) => void) {
+  if (value.trim() === "") {
+    setValue("0");
+  }
+}
+
 function App() {
   const logoUrl = `${import.meta.env.BASE_URL}plax-logo.png`;
   const [state, setState] = useState<AppState>(readStoredState);
@@ -529,9 +545,11 @@ function App() {
                   <span>대한민국</span>
                   <input
                     inputMode="numeric"
-                    min="0"
-                    onChange={(event) => setKoreaScore(event.target.value)}
-                    type="number"
+                    onBlur={() => restoreDefaultScore(koreaScore, setKoreaScore)}
+                    onChange={(event) => setKoreaScore(normalizeScoreInput(event.target.value))}
+                    onFocus={() => clearDefaultScore(koreaScore, setKoreaScore)}
+                    pattern="[0-9]*"
+                    type="text"
                     value={koreaScore}
                   />
                 </label>
@@ -540,9 +558,11 @@ function App() {
                   <span>{selectedMatch.opponent}</span>
                   <input
                     inputMode="numeric"
-                    min="0"
-                    onChange={(event) => setOpponentScore(event.target.value)}
-                    type="number"
+                    onBlur={() => restoreDefaultScore(opponentScore, setOpponentScore)}
+                    onChange={(event) => setOpponentScore(normalizeScoreInput(event.target.value))}
+                    onFocus={() => clearDefaultScore(opponentScore, setOpponentScore)}
+                    pattern="[0-9]*"
+                    type="text"
                     value={opponentScore}
                   />
                 </label>
@@ -602,9 +622,11 @@ function App() {
                 <span>대한민국</span>
                 <input
                   inputMode="numeric"
-                  min="0"
-                  onChange={(event) => setResultKoreaScore(event.target.value)}
-                  type="number"
+                  onBlur={() => restoreDefaultScore(resultKoreaScore, setResultKoreaScore)}
+                  onChange={(event) => setResultKoreaScore(normalizeScoreInput(event.target.value))}
+                  onFocus={() => clearDefaultScore(resultKoreaScore, setResultKoreaScore)}
+                  pattern="[0-9]*"
+                  type="text"
                   value={resultKoreaScore}
                 />
               </label>
@@ -613,9 +635,17 @@ function App() {
                 <span>{selectedMatch.opponent}</span>
                 <input
                   inputMode="numeric"
-                  min="0"
-                  onChange={(event) => setResultOpponentScore(event.target.value)}
-                  type="number"
+                  onBlur={() =>
+                    restoreDefaultScore(resultOpponentScore, setResultOpponentScore)
+                  }
+                  onChange={(event) =>
+                    setResultOpponentScore(normalizeScoreInput(event.target.value))
+                  }
+                  onFocus={() =>
+                    clearDefaultScore(resultOpponentScore, setResultOpponentScore)
+                  }
+                  pattern="[0-9]*"
+                  type="text"
                   value={resultOpponentScore}
                 />
               </label>
