@@ -518,63 +518,71 @@ function App() {
                 ))
               )}
             </div>
-          </div>
 
-          {isWriting ? (
-            <form
-              className={`paperEditor ${isDropping ? "dropPaper" : ""}`}
-              onSubmit={handleTicketSubmit}
-            >
-              <div className="paperClip" />
-              <p className="paperMatch">{selectedMatch.title}</p>
-              <label>
-                <span>이름</span>
-                <input
-                  autoFocus
-                  onChange={(event) => setName(event.target.value)}
-                  placeholder="이름 작성"
-                  type="text"
-                  value={name}
-                />
-              </label>
-              <div className="scoreInputs">
+            {isWriting ? (
+              <form
+                className={`paperEditor ${isDropping ? "dropPaper" : ""}`}
+                onSubmit={handleTicketSubmit}
+              >
+                <div className="paperClip" />
+                <p className="paperMatch">{selectedMatch.title}</p>
                 <label>
-                  <span>대한민국</span>
+                  <span>이름</span>
                   <input
-                    inputMode="numeric"
-                    onBlur={() => restoreDefaultScore(koreaScore, setKoreaScore)}
-                    onChange={(event) => setKoreaScore(normalizeScoreInput(event.target.value))}
-                    onFocus={() => clearDefaultScore(koreaScore, setKoreaScore)}
-                    pattern="[0-9]*"
+                    autoFocus
+                    onChange={(event) => setName(event.target.value)}
+                    placeholder="이름 작성"
                     type="text"
-                    value={koreaScore}
+                    value={name}
                   />
                 </label>
-                <b>:</b>
-                <label>
-                  <span>{selectedMatch.opponent}</span>
-                  <input
-                    inputMode="numeric"
-                    onBlur={() => restoreDefaultScore(opponentScore, setOpponentScore)}
-                    onChange={(event) => setOpponentScore(normalizeScoreInput(event.target.value))}
-                    onFocus={() => clearDefaultScore(opponentScore, setOpponentScore)}
-                    pattern="[0-9]*"
-                    type="text"
-                    value={opponentScore}
-                  />
-                </label>
-              </div>
-              {formError ? <p className="formError">{formError}</p> : null}
-              <div className="paperActions">
-                <button className="ghostButton" onClick={() => setIsWriting(false)} type="button">
-                  닫기
-                </button>
-                <button className="stampButton" disabled={isDropping} type="submit">
-                  쪽지 넣기
-                </button>
-              </div>
-            </form>
-          ) : null}
+                <div className="scoreInputs">
+                  <label>
+                    <span>대한민국</span>
+                    <input
+                      inputMode="numeric"
+                      onBlur={() => restoreDefaultScore(koreaScore, setKoreaScore)}
+                      onChange={(event) =>
+                        setKoreaScore(normalizeScoreInput(event.target.value))
+                      }
+                      onFocus={() => clearDefaultScore(koreaScore, setKoreaScore)}
+                      pattern="[0-9]*"
+                      type="text"
+                      value={koreaScore}
+                    />
+                  </label>
+                  <b>:</b>
+                  <label>
+                    <span>{selectedMatch.opponent}</span>
+                    <input
+                      inputMode="numeric"
+                      onBlur={() => restoreDefaultScore(opponentScore, setOpponentScore)}
+                      onChange={(event) =>
+                        setOpponentScore(normalizeScoreInput(event.target.value))
+                      }
+                      onFocus={() => clearDefaultScore(opponentScore, setOpponentScore)}
+                      pattern="[0-9]*"
+                      type="text"
+                      value={opponentScore}
+                    />
+                  </label>
+                </div>
+                {formError ? <p className="formError">{formError}</p> : null}
+                <div className="paperActions">
+                  <button
+                    className="ghostButton"
+                    onClick={() => setIsWriting(false)}
+                    type="button"
+                  >
+                    닫기
+                  </button>
+                  <button className="stampButton" disabled={isDropping} type="submit">
+                    쪽지 넣기
+                  </button>
+                </div>
+              </form>
+            ) : null}
+          </div>
         </div>
 
         <aside className="potPanel" aria-label="상금 현황">
