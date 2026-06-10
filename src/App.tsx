@@ -431,9 +431,7 @@ function App() {
 
       <nav className="matchTabs" aria-label="경기 선택">
         {MATCHES.map((match) => {
-          const matchSummary = getMatchSummary(state, match.id);
           const isActive = match.id === selectedMatchId;
-          const isFinished = Boolean(matchSummary.result);
 
           return (
             <button
@@ -444,7 +442,6 @@ function App() {
             >
               <span>{match.order}경기</span>
               <strong>{match.title}</strong>
-              <em>{isFinished ? "결과 확정" : `${getTicketsForMatch(state, match.id).length}장`}</em>
             </button>
           );
         })}
