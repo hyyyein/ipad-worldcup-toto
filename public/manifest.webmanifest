@@ -1,0 +1,17 @@
+{
+  "name": "월드컵 스코어 쪽지함",
+  "short_name": "월드컵 쪽지함",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#123f1f",
+  "theme_color": "#123f1f",
+  "icons": [
+    {
+      "src": "plax-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
