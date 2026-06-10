@@ -405,7 +405,7 @@ function App() {
         <div className="titleBlock">
           <img className="companyLogo" src={logoUrl} alt="PLAX" />
           <p className="eyebrow">Office World Cup Pool</p>
-          <h1>월드컵 스코어 쪽지함</h1>
+          <h1>월드컵 스코어 투표함</h1>
         </div>
         <div className="topActions">
           <button
@@ -479,7 +479,7 @@ function App() {
             </button>
           </div>
 
-          <div className="glassBox" aria-label="투명 쪽지함">
+          <div className="glassBox" aria-label="투명 투표함">
             <div className="notePile">
               {selectedTickets.length === 0 ? (
                 <div className="emptyBox">

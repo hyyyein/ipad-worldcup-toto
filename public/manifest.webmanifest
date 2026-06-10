@@ -1,6 +1,6 @@
 {
-  "name": "월드컵 스코어 쪽지함",
-  "short_name": "월드컵 쪽지함",
+  "name": "월드컵 스코어 투표함",
+  "short_name": "월드컵 투표함",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
